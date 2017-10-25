@@ -7,7 +7,7 @@ import (
 type (
 	City struct {
 		Id                bson.ObjectId `bson:"_id,omitempty" json:"id"`
-		TownName          string        `json:"townName"`
-		CurrentPopulation string        `json:"currentPopulation"`
+		TownName          string        `bson:"townName" json:"townName"`
+		CurrentPopulation string        `bson:"currentPopulation" json:"currentPopulation"`
 	}
 )

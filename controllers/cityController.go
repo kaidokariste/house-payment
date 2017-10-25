@@ -6,6 +6,7 @@ import(
 
 	"house-payment/data"
 
+	"log"
 )
 
 // Handler for HTTP Get - "/cities"
@@ -16,6 +17,7 @@ func GetCities(w http.ResponseWriter, r *http.Request){
 	col := context.DbCollection("cities")
 	repo := &data.CityRepository{C:col}
 	cities := repo.GetAll()
+	log.Println("Cities from GetAll", cities)
 	j, err := json.Marshal(CityResource{Data: cities})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -24,4 +26,5 @@ func GetCities(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(j)
+
 }
