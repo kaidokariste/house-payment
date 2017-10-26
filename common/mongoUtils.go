@@ -2,7 +2,6 @@ package common
 
 import (
 	"gopkg.in/mgo.v2"
-	"time"
 	"log"
 )
 
@@ -12,12 +11,7 @@ var session *mgo.Session
 func GetSession() *mgo.Session {
 	if session == nil {
 		var err error
-		session, err = mgo.DialWithInfo(&mgo.DialInfo{
-			Addrs:    []string{AppConfig.MongoDBHost}, //Global configuration struct from utils.go
-			Username: AppConfig.DBUser,
-			Password: AppConfig.DBPwd,
-			Timeout:  60 * time.Second,
-		})
+		session, err = mgo.Dial(AppConfig.MongoDBFullURI)
 		if err != nil {
 			log.Fatalf("[GetSession]: %s\n", err)
 		}
@@ -29,12 +23,7 @@ func GetSession() *mgo.Session {
 // This will go to booter and is called in main.go before HTTP server start.
 func createDBSession() {
 	var err error
-	session, err = mgo.DialWithInfo(&mgo.DialInfo{
-		Addrs:    []string{AppConfig.MongoDBHost},
-		Username: AppConfig.DBUser,
-		Password: AppConfig.DBPwd,
-		Timeout:  60 * time.Second,
-	})
+	session, err = mgo.Dial(AppConfig.MongoDBFullURI)
 	if err != nil {
 		log.Fatalf("[createDBSession]: %s\n", err)
 	}
