@@ -15,7 +15,6 @@ func GetCities(w http.ResponseWriter, r *http.Request){
 	context := NewContext()
 	defer context.Close()
 	col := context.DbCollection("cities")
-	log.Println("[DbCollection]: ", col)
 	repo := &data.CityRepository{C:col}
 	cities := repo.GetAll()
 	j, err := json.Marshal(CityResource{Data: cities})

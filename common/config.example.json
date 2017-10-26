@@ -1,9 +1,6 @@
 {
-  "Server"      : "0.0.0.0:8080",
-  "MongoDBHost" : "ds111111.mlab.com:27035",
-  "MongoDBUser"	: "",
-  "MongoDBPwd"	: "",
-  "Database"    : "taskdb",
+  "Server"      : "0.0.0.0:8000",
   "LogLevel"    : 4,
-  "MongoDBFullURI": "mongodb://<username>:<pasw>@ds111111.mlab.com:27035/<dtabase-name>"
+  "MongoDBFullURI": "mongodb://<username>:<pasword>@ds12345.mlab.com:27035/<my-database>"
+  "Database" : "<my-database>"
 }

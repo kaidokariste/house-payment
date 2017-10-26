@@ -8,7 +8,6 @@ import(
 	//"github.com/codegangsta/negroni"
 	"net/http"
 	"log"
-	"fmt"
 )
 
 func main()  {
@@ -22,17 +21,14 @@ func main()  {
 	//n := negroni.Classic()
 	//n.UseHandler(router)
 
-	//Test Parsing configuration
-	fmt.Println(common.AppConfig.MongoDBFullURI)
-
 	//server := &http.Server{
 	//	Addr:    ":9000",//common.AppConfig.Server,
 	//	Handler: n,
 	//}
 
-	log.Println("Listening...")
+	log.Println("Listening...", common.AppConfig.Server)
 	//server.ListenAndServe()
-	err := http.ListenAndServe(":8080", router)
+	err := http.ListenAndServe(common.AppConfig.Server, router)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}

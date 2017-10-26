@@ -10,7 +10,8 @@ import (
 )
 
 type configuration struct {
-	Server, MongoDBHost, DBUser, DBPwd, Database, MongoDBFullURI string
+	Server, MongoDBFullURI, Database string
+	LogLevel int
 }
 
 // AppConfig holds the configuration values from config.json file
