@@ -4,5 +4,6 @@
   "MongoDBUser"	: "",
   "MongoDBPwd"	: "",
   "Database"    : "taskdb",
-  "LogLevel"    : 4
+  "LogLevel"    : 4,
+  "MongoDBFullURI": "mongodb://<username>:<pasw>@ds111111.mlab.com:27035/<dtabase-name>"
 }
