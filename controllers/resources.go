@@ -4,8 +4,8 @@ import (
 	"house-payment/models"
 )
 
+// Models for JSON resources
 type (
-	// Models for JSON resources
 	//For Post - /user/register
 	//UserResource struct {
 	//	Data models.User `json:"data"`
@@ -19,8 +19,17 @@ type (
 	//AuthUserResource struct {
 	//	Data AuthUserModel `json:"data"`
 	//}
-	// For Get - /cities
+
+	// For Post/Put - /cities
+	// For Get - /cities/id
 	CityResource struct {
+		Data models.City `json:"data"`
+	}
+
+	// For Get - /cities
+	CitiesResource struct {
 		Data []models.City `json:"data"`
 	}
+
+
 )

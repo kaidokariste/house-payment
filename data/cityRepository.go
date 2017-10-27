@@ -5,6 +5,7 @@ import (
 	"house-payment/models"
 
 	"log"
+	"gopkg.in/mgo.v2/bson"
 )
 
 var err error
@@ -13,6 +14,15 @@ type CityRepository struct {
 	C *mgo.Collection
 }
 
+// Create new city entri to collection
+func (r *CityRepository) Create(city *models.City) error {
+	obj_id := bson.NewObjectId()
+	city.Id = obj_id
+	err := r.C.Insert(&city)
+	return err
+}
+
+// Function to get all cities from collection
 func (r *CityRepository) GetAll() []models.City{
 	// Define slice of City structs
 	var cities []models.City
