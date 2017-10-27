@@ -28,5 +28,6 @@ func SetCityRoutes(router *mux.Router) *mux.Router {
 
 func SetUnprotectedCityRoutes(router *mux.Router) *mux.Router  {
 	router.HandleFunc("/cities", controllers.GetCities).Methods("GET")
+	router.HandleFunc("/cities", controllers.CreateCity).Methods("POST")
 	return router
 }

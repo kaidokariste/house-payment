@@ -8,6 +8,6 @@ type (
 	City struct {
 		Id                bson.ObjectId `bson:"_id,omitempty" json:"id"`
 		TownName          string        `bson:"townName" json:"townName"`
-		CurrentPopulation int        `bson:"currentPopulation" json:"currentPopulation"`
+		CurrentPopulation int        	`bson:"currentPopulation" json:"currentPopulation"`
 	}
 )
