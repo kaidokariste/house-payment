@@ -7,7 +7,26 @@ import (
 	"house-payment/data"
 
 	"log"
+	"github.com/gorilla/mux"
 )
+
+// Handler for HTTP Get - "/cities"
+// Return all City Documents
+func GetCities(w http.ResponseWriter, r *http.Request) {
+	context := NewContext()
+	defer context.Close()
+	col := context.DbCollection("cities")
+	repo := &data.CityRepository{C: col}
+	cities := repo.GetAll()
+	j, err := json.Marshal(CitiesResource{Data: cities})
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(j)
+}
 
 // Handler for HTTP Post - "/cities"
 // Insert a new city
@@ -50,20 +69,21 @@ func CreateCity(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Handler for HTTP Get - "/cities"
-// Return all City Documents
-func GetCities(w http.ResponseWriter, r *http.Request) {
+// Handler of HTTP Delete - "cities/{id}"
+func DeleteCity(w http.ResponseWriter, r *http.Request){
+	//Get id from incoming url
+	vars := mux.Vars(r)
+	id := vars["id"]
 	context := NewContext()
 	defer context.Close()
 	col := context.DbCollection("cities")
-	repo := &data.CityRepository{C: col}
-	cities := repo.GetAll()
-	j, err := json.Marshal(CitiesResource{Data: cities})
-	if err != nil {
+	repo := &data.CityRepository{col}
+	//Delete a city document
+	err := repo.Delete(id)
+	if err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(j)
+	w.WriteHeader(http.StatusNoContent)
 }
+

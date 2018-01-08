@@ -37,3 +37,9 @@ func (r *CityRepository) GetAll() []models.City{
 	}
 	return cities
 }
+
+// Function to delete specified city document
+func(r *CityRepository) Delete(id string) error {
+	err := r.C.Remove(bson.M{"_id": bson.ObjectIdHex(id)})
+	return err
+}
