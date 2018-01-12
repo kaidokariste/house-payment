@@ -7,8 +7,6 @@ import (
 	"house-payment/controllers"
 )
 
-
-
 /*
 // SeteRoutes configures routes for protected city entry
 func SetCityRoutes(router *mux.Router) *mux.Router {
@@ -18,7 +16,7 @@ func SetCityRoutes(router *mux.Router) *mux.Router {
 	//cityRouter.HandleFunc("/cities/{id}", controllers.GetCityByID).Methods("GET")
 
 	//cityRouter.HandleFunc("/cities/tasks/{id}", controllers.GetCitiesByTask).Methods("GET")
-	//cityRouter.HandleFunc("/cities/{id}", controllers.DeleteCity).Methods("DELETE")
+
 	//router.PathPrefix("/cities").Handler(negroni.New(
 	//	negroni.HandlerFunc(common.Authorize),
 	//	negroni.Wrap(cityRouter),
@@ -29,5 +27,6 @@ func SetCityRoutes(router *mux.Router) *mux.Router {
 func SetUnprotectedCityRoutes(router *mux.Router) *mux.Router  {
 	router.HandleFunc("/cities", controllers.GetCities).Methods("GET")
 	router.HandleFunc("/cities", controllers.CreateCity).Methods("POST")
+	router.HandleFunc("/cities/{id}", controllers.DeleteCity).Methods("DELETE")
 	return router
 }

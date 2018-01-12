@@ -1,3 +1,4 @@
 .idea/**
 common/config.json
-projectFilesBackup/
+projectFilesBackup/.idea/workspace.xml
+
