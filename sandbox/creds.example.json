@@ -1,0 +1,5 @@
+{
+	"fbkey":"<fb-key-from-fb-SDK>",
+	"fbsecret":"<fb-secret-from-fb-SDK>",
+	"fbcallback": "<fb-callback-URI-from-fb-SDK>"
+}
