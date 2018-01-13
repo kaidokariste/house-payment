@@ -18,3 +18,4 @@ application
 | /cities | PUT | Updates an existing city |
 | /cities | GET | Get all cities
 | /cities/{id} | GET | Gets single city for a given ID. The value of the comes from the route parameter
+| /cities/{id} | DELETE | Delete single city with given ID
