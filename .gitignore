@@ -1,3 +1,6 @@
 .idea/**
 common/config.json
 projectFilesBackup/.idea/workspace.xml
+sandbox/creds.json
+key/household.rsa
+key/household.rsa.pub
