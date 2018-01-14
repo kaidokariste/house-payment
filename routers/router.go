@@ -11,10 +11,8 @@ func InitRoutes() *mux.Router {
 	// Routes for welcome router
 	router = SetWelcomeRoutes(router)
 	// Routes for the User entity
-	//router = SetUserRoutes(router)
-	// Routes for the Unprotected City routes entity
-	router = SetUnprotectedCityRoutes(router)
-	// Routes for the TaskNote entity
-	//router = SetNoteRoutes(router)
+	router = SetUserRoutes(router)
+	// Routes for protected city resources
+	router = SetProtectedCityRoutes(router)
 	return router
 }
